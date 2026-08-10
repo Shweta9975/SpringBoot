@@ -1,7 +1,12 @@
 package com.firstproject.springboot.module1introduction.impl;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import com.firstproject.springboot.module1introduction.NotificationService;
 
+@Component
+@Qualifier("smsnotif")
 public class SmsNotificationService implements NotificationService{
 
 	@Override

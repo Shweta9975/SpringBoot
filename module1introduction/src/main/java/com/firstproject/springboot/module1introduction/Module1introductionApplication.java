@@ -1,6 +1,7 @@
 package com.firstproject.springboot.module1introduction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +11,13 @@ import com.firstproject.springboot.module1introduction.impl.SmsNotificationServi
 @SpringBootApplication
 public class Module1introductionApplication implements CommandLineRunner{
 
-	NotificationService notificationServiceObj;
-	@Autowired
-	PaymentService paymentserviceObj;
+	//@Autowired
+	final NotificationService notificationServiceObj; //Dependency Injection
+	
+	Module1introductionApplication(@Qualifier("smsnotif")NotificationService notificationServiceObj){ //constructor DI preferred
+		this.notificationServiceObj=notificationServiceObj;
+	}
+	//PaymentService paymentserviceObj;
 	public static void main(String[] args) {
 		SpringApplication.run(Module1introductionApplication.class, args);
 	}
@@ -20,8 +25,8 @@ public class Module1introductionApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		paymentserviceObj.pay();
-		notificationServiceObj=new SmsNotificationService();
+	//	paymentserviceObj.pay();
+		//notificationServiceObj=new SmsNotificationService();
 		notificationServiceObj.send("hello");
 	}
 

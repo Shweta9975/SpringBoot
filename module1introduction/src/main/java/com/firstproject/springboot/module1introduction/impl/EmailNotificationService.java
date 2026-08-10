@@ -1,7 +1,13 @@
 package com.firstproject.springboot.module1introduction.impl;
 
-import com.firstproject.springboot.module1introduction.NotificationService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
+import com.firstproject.springboot.module1introduction.NotificationService;
+//@Primary
+@Component
+@Qualifier("emailnotif")
 public class EmailNotificationService implements NotificationService{
 
 	@Override
