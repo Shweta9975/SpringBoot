@@ -5,9 +5,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.firstproject.springboot.module1introduction.impl.SmsNotificationService;
+
 @SpringBootApplication
 public class Module1introductionApplication implements CommandLineRunner{
 
+	NotificationService notificationServiceObj;
 	@Autowired
 	PaymentService paymentserviceObj;
 	public static void main(String[] args) {
@@ -18,6 +21,8 @@ public class Module1introductionApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		paymentserviceObj.pay();
+		notificationServiceObj=new SmsNotificationService();
+		notificationServiceObj.send("hello");
 	}
 
 }
