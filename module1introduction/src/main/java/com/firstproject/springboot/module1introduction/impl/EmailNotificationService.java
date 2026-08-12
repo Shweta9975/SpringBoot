@@ -9,7 +9,7 @@ import com.firstproject.springboot.module1introduction.NotificationService;
 //@Primary
 @Component
 @Qualifier("emailnotif")
-@ConditionalOnProperty(name="notification.type",havingValue="email")
+//@ConditionalOnProperty(name="notification.type",havingValue="email")
 public class EmailNotificationService implements NotificationService{
 
 	@Override
