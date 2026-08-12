@@ -14,7 +14,7 @@ public class Module1introductionApplication implements CommandLineRunner{
 	//@Autowired
 	final NotificationService notificationServiceObj; //Dependency Injection
 	
-	Module1introductionApplication(@Qualifier("smsnotif")NotificationService notificationServiceObj){ //constructor DI preferred
+	Module1introductionApplication(NotificationService notificationServiceObj){ //constructor DI preferred
 		this.notificationServiceObj=notificationServiceObj;
 	}
 	//PaymentService paymentserviceObj;

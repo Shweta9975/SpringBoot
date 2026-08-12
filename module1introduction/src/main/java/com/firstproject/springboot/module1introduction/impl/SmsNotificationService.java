@@ -8,7 +8,7 @@ import com.firstproject.springboot.module1introduction.NotificationService;
 
 @Component
 @Qualifier("smsnotif")
-@ConditionalOnProperty(name="notification.type",value="sms")
+@ConditionalOnProperty(name="notification.type",havingValue="sms")
 public class SmsNotificationService implements NotificationService{
 
 	@Override
