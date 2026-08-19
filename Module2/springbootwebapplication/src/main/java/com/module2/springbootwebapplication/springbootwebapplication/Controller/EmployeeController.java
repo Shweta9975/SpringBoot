@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.module2.springbootwebapplication.springbootwebapplication.DTO.EmployeeDTO;
+import com.module2.springbootwebapplication.springbootwebapplication.Repositories.EmployeeRepository;
 
 @RestController
 @RequestMapping(path="/employees")
@@ -23,6 +24,8 @@ public class EmployeeController {
 //	public String getMySuperSecretMessage() {
 //		return "asdgh@#$DASD";
 //}
+	
+	private final EmployeeRepository employeeRepository;
 	
 	@GetMapping("/{employeeId}")
 	public EmployeeDTO getEmployeeById(@PathVariable(name="employeeId") Long id) {
@@ -37,6 +40,11 @@ public class EmployeeController {
 //		
 //	}
 	
+	public EmployeeController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	//we can use GetMapping without ("/employees") since we are inside employeecontroller
 	@GetMapping
 	public String getAllEmployees(@RequestParam(required=false,name="inputAge") Integer age,
