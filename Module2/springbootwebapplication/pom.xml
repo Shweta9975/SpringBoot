@@ -46,6 +46,13 @@
     <artifactId>h2</artifactId>
     
 </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <optional>true</optional>
+   </dependency>
 		
 		
 
