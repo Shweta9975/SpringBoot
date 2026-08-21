@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.module2.springbootwebapplication.springbootwebapplication.DTO.EmployeeDTO;
 import com.module2.springbootwebapplication.springbootwebapplication.Entities.EmployeeEntity;
 import com.module2.springbootwebapplication.springbootwebapplication.Repositories.EmployeeRepository;
+import com.module2.springbootwebapplication.springbootwebapplication.Services.EmployeeService;
 
 @RestController
 @RequestMapping(path="/employees")
@@ -26,19 +27,16 @@ public class EmployeeController {
 //		return "asdgh@#$DASD";
 //}
 	
-	private final EmployeeRepository employeeRepository; 
+	private final EmployeeService employeeService; 
 	
-	
-	
-	
-
-	public EmployeeController(EmployeeRepository employeeRepository) {
-		this.employeeRepository= employeeRepository;
+	public EmployeeController(EmployeeService employeeService) {
+		super();
+		this.employeeService = employeeService;
 	}
 
 	@GetMapping("/{employeeId}")
 	public EmployeeEntity getEmployeeById(@PathVariable(name="employeeId") Long id) {
-		return  employeeRepository.findById(id).orElse(null);
+		return  employeeService.getEmployeeById(id);
 		
 	}
 	
@@ -55,7 +53,7 @@ public class EmployeeController {
 	@GetMapping
 	public List<EmployeeEntity> getAllEmployees(@RequestParam(required=false,name="inputAge") Integer age,
 			                      @RequestParam(required=false) String sortBy){ //used required to make parameter optional
-		return employeeRepository.findAll();
+		return employeeService.getAllEmployees();
 		
 	}
 	
@@ -65,9 +63,9 @@ public class EmployeeController {
 //	}
 	
 	@PostMapping
-	public EmployeeEntity createNewEmployee1(@RequestBody EmployeeEntity inputEmployee) {
+	public EmployeeEntity createNewEmployee(@RequestBody EmployeeEntity inputEmployee) {
 
-		return employeeRepository.save(inputEmployee);
+		return employeeService.createNewEmployee(inputEmployee);
 	}
 	
 	@PutMapping
