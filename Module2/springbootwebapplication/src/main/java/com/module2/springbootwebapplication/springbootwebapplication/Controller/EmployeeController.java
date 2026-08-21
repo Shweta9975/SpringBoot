@@ -35,7 +35,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/{employeeId}")
-	public EmployeeEntity getEmployeeById(@PathVariable(name="employeeId") Long id) {
+	public EmployeeDTO getEmployeeById(@PathVariable(name="employeeId") Long id) {
 		return  employeeService.getEmployeeById(id);
 		
 	}
@@ -51,7 +51,7 @@ public class EmployeeController {
 
 	//we can use GetMapping without ("/employees") since we are inside employeecontroller
 	@GetMapping
-	public List<EmployeeEntity> getAllEmployees(@RequestParam(required=false,name="inputAge") Integer age,
+	public List<EmployeeDTO> getAllEmployees(@RequestParam(required=false,name="inputAge") Integer age,
 			                      @RequestParam(required=false) String sortBy){ //used required to make parameter optional
 		return employeeService.getAllEmployees();
 		
@@ -63,7 +63,7 @@ public class EmployeeController {
 //	}
 	
 	@PostMapping
-	public EmployeeEntity createNewEmployee(@RequestBody EmployeeEntity inputEmployee) {
+	public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO inputEmployee) {
 
 		return employeeService.createNewEmployee(inputEmployee);
 	}
